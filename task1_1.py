@@ -6,7 +6,7 @@ def season(num):
     if num in [6, 7, 8]:
         print('summer')
     if num in [9, 10, 11]:
-        print('autumn')
+        return('autumn')
 
 num = int(input())
 season(num)
