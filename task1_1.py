@@ -1,10 +1,10 @@
 def season(num):
     if num in [1, 2, 12]:
-        print('winter')
+        return('winter')
     if num in [3, 4, 5]:
-        print('spring')
+        return('spring')
     if num in [6, 7, 8]:
-        print('summer')
+        return('summer')
     if num in [9, 10, 11]:
         return('autumn')
 
