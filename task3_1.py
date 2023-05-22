@@ -8,6 +8,6 @@ with open('wiki1.json', 'w') as f:
         try:
             defin = line['description']['value']
         except KeyError:
-            defin = 'None'
+            defin = None
         dic[word] = defin
     json.dump(dic, f, ensure_ascii=False, indent=4)
