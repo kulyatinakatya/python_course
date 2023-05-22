@@ -27,11 +27,11 @@ class Sentence:
 
 class Corpus:
 
-    def __init__(self):
+    def __init__(self, path_to_file):
+        self.tree = etree.parse(path_to_file)
         self._sentences = []
 
-    def load(self, path_to_file):
-        self.tree = etree.parse(path_to_file)
+    def load(self):
         root = self.tree.getroot()
         for sent in root.findall("text/paragraphs/paragraph/sentence"):
             words = []
@@ -47,8 +47,8 @@ class Corpus:
             self._sentences.append(sentence)
 
 
-a = Corpus()
-a.load("annot.opcorpora.no_ambig.xml")
+a = Corpus("annot.opcorpora.no_ambig.xml")
+a.load()
 
 
 print(a._sentences[10].get_str_sent()) #выдаёт 11-ое предложение
