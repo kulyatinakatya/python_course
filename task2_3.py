@@ -19,7 +19,6 @@ def third_task(filepath: str) -> str:
                 del row['Images']
                 del row['Description']
                 writer.writerow(row)
-    return path_to_new_file
 
 
 file = 'stage3_test.csv'

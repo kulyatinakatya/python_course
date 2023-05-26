@@ -15,7 +15,6 @@ def first_task(filepath: str) -> str:
             for row in reader:
                 if len(row['Images'].split(',')) > 3:
                     writer.writerow(row)
-    return path_to_new_file
 
 
 file = 'stage3_test.csv'

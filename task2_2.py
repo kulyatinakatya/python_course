@@ -15,7 +15,6 @@ def second_task(filepath: str) -> str:
             for row in reader:
                 if 10000.0 < float(row['Price']) < 50000.0:
                     writer.writerow(row)
-        return path_to_new_file
 
 
 file = 'stage3_test.csv'
