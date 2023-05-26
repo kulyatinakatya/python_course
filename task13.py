@@ -24,14 +24,17 @@ class Sentence:
     def get_str_sent(self):
         return self._sent
 
+    def get_words(self):
+        return self._words
+
 
 class Corpus:
 
-    def __init__(self):
+    def __init__(self, path_to_file):
+        self.tree = etree.parse(path_to_file)
         self._sentences = []
 
-    def load(self, path_to_file):
-        self.tree = etree.parse(path_to_file)
+    def load(self):
         root = self.tree.getroot()
         for sent in root.findall("text/paragraphs/paragraph/sentence"):
             words = []
@@ -46,11 +49,13 @@ class Corpus:
             sentence = Sentence(sent_str, words)
             self._sentences.append(sentence)
 
+    def get_sentences(self):
+        return self._sentences
 
-a = Corpus()
-a.load("annot.opcorpora.no_ambig.xml")
 
+a = Corpus("annot.opcorpora.no_ambig.xml")
+a.load()
 
-print(a._sentences[10].get_str_sent()) #выдаёт 11-ое предложение
-print(a._sentences[10]._words[0].get_str_word()) #выдаёт 1-ое слово в 11-ом предложении
-print(a._sentences[10]._words[0].get_gr(0)) #выдаёт 1-ую граммему 1-ого слова в 11-ом предложении
+print(a._sentences[10].get_str_sent())  # выдаёт 11-ое предложение
+print(a._sentences[10]._words[0].get_str_word())  # выдаёт 1-ое слово в 11-ом предложении
+print(a._sentences[10]._words[0].get_gr(0))  # выдаёт 1-ую граммему 1-ого слова в 11-ом предложении
