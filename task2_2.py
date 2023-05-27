@@ -1,21 +1,19 @@
 import csv
 
 
-def second_task(filepath: str) -> str:
+def second_task(filepath):
     path_to_new_file = 'task2_2.csv'
 
     with open(filepath, 'r', newline='') as rfile:
-        reader = csv.DictReader(rfile)
+        reader = csv.reader(rfile)
+        headers = next(reader, None)
 
         with open(path_to_new_file, 'w', newline='') as wfile:
-            fieldnames = reader.fieldnames
-            writer = csv.DictWriter(wfile, fieldnames=fieldnames)
-            writer.writeheader()
-
+            writer = csv.writer(wfile)
+            if headers:
+                writer.writerow(headers)
             for row in reader:
-                if 10000.0 < float(row['Price']) < 50000.0:
+                if 50000 > float(row[4]) > 10000:
                     writer.writerow(row)
 
-
-file = 'stage3_test.csv'
-second_task(file)
+second_task('stage3_test.csv')
