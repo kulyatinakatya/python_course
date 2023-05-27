@@ -17,8 +17,8 @@ def split_to_words(filepath: str):
             pass
         return a_dict
 
-    f = open(filepath, 'r')
-    json.loads(f.read(), object_hook=_get_says)
+    with open(filepath, 'r') as f:
+        json.loads(f.read(), object_hook=_get_says)
 
     sentences = []
     for item in results:
@@ -45,8 +45,8 @@ def split_to_characters_and_says(filepath):
             pass
         return a_dict
 
-    f = open(filepath, 'r')
-    json.loads(f.read(), object_hook=_get_chars_and_says)
+    with open(filepath, 'r') as f:
+        json.loads(f.read(), object_hook=_get_chars_and_says)
 
     return results
 
@@ -61,8 +61,8 @@ def split_to_characters(filepath):
             pass
         return a_dict
 
-    f = open(filepath, 'r')
-    json.loads(f.read(), object_hook=_get_chars)
+    with open(filepath, 'r') as f:
+        json.loads(f.read(), object_hook=_get_chars)
 
     return results
 
@@ -119,8 +119,8 @@ def fourth_task(filepath):
 
 json_file = 'RomeoAndJuliet.json'
 csv_file = 'stage3_test.csv'
-#first_task(json_file)
-#second_task(json_file)
-#third_task(json_file)
+first_task(json_file)
+second_task(json_file)
+third_task(json_file)
 fourth_task(csv_file)
 
