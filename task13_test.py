@@ -1,4 +1,4 @@
-from task13 import *
+from task13_volN import *
 import unittest
 import xml.etree.ElementTree as etree
 
@@ -9,7 +9,7 @@ class TestCorpus(unittest.TestCase):
         self.test_corp.load()
 
     def test_instances(self):  # тест, проверяющий, что все предложения являются объектами класса Sentence, а все слова – Wordform
-        for sentence in self.test_corp.get_sentences():
+        for sentence in self.test_corp.getsentences():
             with self.subTest(sentence=sentence):
                 self.assertTrue(isinstance(sentence, Sentence))
 
@@ -21,13 +21,12 @@ class TestCorpus(unittest.TestCase):
         tree = etree.parse("annot.opcorpora.no_ambig.xml")
         root = tree.getroot()
         for token, word in zip(root.find("text/paragraphs/paragraph/sentence/tokens"),
-                               self.test_corp._sentences[0]._words):
+                               self.test_corp.i_sent(0).get_words()):
             with self.subTest(token=token, word=word):
                 grams = [gram.attrib['v'] for gram in token.findall('tfr/v/l/g')]
-                test_grams = word._gram
+                test_grams = word.get_grams()
                 self.assertEqual(test_grams, grams)
 
 
 if __name__ == '__main__':
     unittest.main()
-    

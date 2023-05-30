@@ -12,6 +12,9 @@ class Wordform:
     def get_str_word(self):
         return self._word
 
+    def get_grams(self):
+        return self._gram
+
 
 class Sentence:
     def __init__(self, sent_str, words):
@@ -49,5 +52,32 @@ class Corpus:
             sentence = Sentence(sent_str, words)
             self._sentences.append(sentence)
 
-    def get_sentences(self):
+    def getsentences(self):
         return self._sentences
+
+    def i_sent(self, num_sent):
+        return self._sentences[num_sent]
+
+    def show_sent(self, num_sent):
+        sentence = self.i_sent(num_sent)
+        return sentence.get_str_sent()
+
+    def i_word(self, num_sent, num_word):
+        return self.i_sent(num_sent).get_word(num_word)
+
+    def show_word(self, num_sent, num_word):
+        word = self.i_word(num_sent, num_word)
+        return word.get_str_word()
+
+    def show_gr(self, num_sent, num_word, num_gr):
+        return self.i_word(num_sent, num_word).get_gr(num_gr)
+
+
+
+
+
+
+
+
+
+
