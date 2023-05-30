@@ -71,13 +71,3 @@ class Corpus:
 
     def show_gr(self, num_sent, num_word, num_gr):
         return self.i_word(num_sent, num_word).get_gr(num_gr)
-
-
-
-
-
-
-
-
-
-
