@@ -1,4 +1,4 @@
-from task13_volN import *
+from task13 import *
 import unittest
 import xml.etree.ElementTree as etree
 
@@ -30,3 +30,4 @@ class TestCorpus(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    
